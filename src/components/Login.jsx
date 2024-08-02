@@ -1,17 +1,19 @@
 import styled from "styled-components";
+import {useContext} from "react";
+import { ThemeContext } from "./Theme.jsx";
 
 const StyledDiv = styled.div`
-    background-color: #FFFFFF;
     width: 400px;
     height: 400px;
     margin: 7em auto;
     border-radius: 1.5em;
     box-shadow: 0 11px 35px 2px rgba(0, 0, 0, 0.14);
+    background-color: ${(props) => props.theme.divBackground};
 `;
 
 const StyledP = styled.p`
     padding-top: 40px;
-    color: rgb(104, 119, 244);
+    color: ${(props) => props.theme.pText};;
     font-family: Georgia, serif;
     font-weight: bold;
     font-size: 35px;
@@ -26,10 +28,10 @@ const StyledInput = styled.input`
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 1px;
-    background: rgba(136, 126, 126, 0.04);
+    background: ${(props) => props.theme.inputBackground};
     padding: 15px 20px;
     border-radius: 20px;
-    border: 2px solid #808080;
+    border: ${(props) => props.theme.border};
     margin: 25px 15px;
     text-align: center;
     display: flex;
@@ -47,7 +49,7 @@ const StyledButton = styled.button`
     color: #fff;
     font-family: "Monaco", "Courier New", serif;
     font-weight: bold;
-    background: linear-gradient(110.6deg, rgb(184, 142, 252) 2.2%, rgb(104, 119, 244) 100.2%);
+    background: ${(props) => props.theme.buttonBackground};
     border: 0;
     padding: 10px 40px;
     margin-left: 35%;
@@ -58,13 +60,21 @@ const StyledButton = styled.button`
 
 export default function Login() {
 
+    const { theme } = useContext(ThemeContext);
+
     function handleSubmit() {
 
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (username === password) {
+            console.log("They match! Still implementing the logic here...");
+        }
     }
 
     return(
         <>
-            <StyledDiv>
+            <StyledDiv theme={ theme }>
                 <StyledP>Sign-In</StyledP>
                 <StyledForm>
                     <StyledInput name="username" type="text" placeholder="Username"/>
