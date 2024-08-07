@@ -1,5 +1,5 @@
 # CS391-Final-Project
 
-This our React vite.js final project for our summer session II 2024 CS391 course.
-
-# Description
+Welcome to our React vite.js final project for our CS391 course. This is a simple 
+React application that contains a login page, which calls an API on a successful
+login attempt.

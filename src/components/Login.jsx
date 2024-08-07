@@ -6,7 +6,7 @@ import {useContext, useState} from "react";
 import { ThemeContext } from "./Theme.jsx";
 
 
-{/* CSS-in-JS Styling for Div */}
+{/* CSS-in-JS Styling for main Div */}
 const StyledDiv = styled.div`
     width: 400px;
     height: 400px;
@@ -67,13 +67,14 @@ const StyledButton = styled.button`
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 `;
 
+{/* CSS-in-JS Styling for error message button */}
 const StyledMessage = styled.p`
     padding-top: 15px;
     margin: 0 auto;
-    font: ${(props) => props.theme.messageBackground};
     text-align: center;
     display: flex;
     justify-content: center;
+    font-weight: bold;
     font-family: "Monaco", "Courier New", serif;
     
 `;
@@ -95,10 +96,11 @@ export default function Login() {
     {/* async onClick function for the sign-in button press */}
     async function handleSubmit() {
 
-        {/* If the username and password match, call the APICall function*/}
+        {/* If the username and password match, set the loggedIn useState to true */}
         if (user === pass) {
             setIsLoggedIn(true);
 
+            {/* If the username and password do not match, set an error message */}
         } else (
             setMessage('Error, try again!')
         );
@@ -106,18 +108,21 @@ export default function Login() {
 
     return(
         <>
+            {/* Check if the user is logged into the page. If so, call the APICall Component */}
             {isLoggedIn ? (
                 <APICall/>
             ) : (
                 <StyledDiv theme={theme}>
                     <StyledP>Sign-In</StyledP>
+                    {/* Styled form that renders the password and username fields */}
                     <StyledForm>
                         <StyledInput type="text" placeholder="Username" onChange={(e) => setUser(e.target.value)}/>
-
                         <StyledInput type="password" placeholder="Password" onChange={(e) => setPass(e.target.value)}/>
                     </StyledForm>
 
+                    {/* Button that handles the login */}
                     <StyledButton type="submit" onClick={handleSubmit}>Login</StyledButton>
+                    {/* If the username and password do not match, displays an error message */}
                     <StyledMessage>{message}</StyledMessage>
                 </StyledDiv>
 

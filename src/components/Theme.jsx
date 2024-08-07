@@ -15,7 +15,6 @@ const lightTheme = {
     inputBackground: '#FFFFFF',
     border: '2px solid #808080',
     apiBackground: '#a1dbf0',
-    messageBackground: '#000000',
 };
 
 {/* Theme values for the dark theme context */}
@@ -28,7 +27,6 @@ const darkTheme = {
     textColor: '#000000',
     border: '2px solid #878586',
     apiBackground: 'rgb(225, 107, 140)',
-    messageBackground: '#F3EBF6',
 };
 
 {/* Creates the light/dark theme toggle button */}
@@ -52,7 +50,7 @@ export default function ThemeContextProvider( {children} ) {
     const [theme, setTheme] = useState(lightTheme);
 
 
-    {/* toggle function that sets the useState */}
+    {/* Toggle function that sets the useState */}
     function toggle() {
         setTheme(theme === lightTheme ? darkTheme : lightTheme);
     }

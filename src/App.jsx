@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
+{/* App function that render the login page using the ThemeContext Provider*/}
 function App() {
 
   return (
