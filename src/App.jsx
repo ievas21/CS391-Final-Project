@@ -2,6 +2,8 @@ import Login from "./components/Login.jsx";
 import {createGlobalStyle} from "styled-components";
 import ThemeContextProvider from "./components/Theme.jsx";
 
+
+{/* Establish a global style to the page */}
 const GlobalStyle = createGlobalStyle`
     html {
         margin: 0;
